@@ -15,7 +15,7 @@ class GetMenuController extends Controller
         }
         return $data;
     }
-    
+
     public function getMenu(Request $request)
     {
         $merchantID = env('GRAB_MERCHANT_ID', '');
@@ -704,10 +704,6 @@ class GetMenuController extends Controller
                 ],
             ]                  
         ];
-
-        if (!$request->hasHeader('Authorization')) {
-            return $response->unauthorized();
-        }
 
         return $response;
     }
