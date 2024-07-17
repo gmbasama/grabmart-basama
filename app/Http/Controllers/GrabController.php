@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
+use App\Models\Grab;
+
 class GrabController extends Controller
 {
     public function oAuth()
@@ -59,137 +61,6 @@ class GrabController extends Controller
         }
     }
 
-    public function getMenu(Request $request)
-    {
-        $merchantID = env('GRAB_MERCHANT_ID', '');
-        $partnerMerchantID = env('GRAB_PARTNER_ID', '');
-
-        $response = [
-            'merchantID' => '',
-            'partnerMerchantID' => '',
-            'currency' => [
-                'code' => '',
-                'symbol' => '',
-                'exponent' => 0
-            ],
-            'sellingTimes' => [
-                [
-                    'startTime' => '2022-03-01 10:00:00',
-                    'endTime' => '2025-01-21 22:00:00',
-                    'id' => 'partner-sellingTimeID-1',
-                    'name' => 'Best deal',
-                    'serviceHours' => [
-                        'mon' => [
-                            'openPeriodType' => 'OpenPeriod',
-                            'periods' => [
-                                [
-                                    'startTime' => '11:30',
-                                    'endTime' => '14:00'
-                                    ]
-                            ]
-                        ],
-                        'tue' => [
-                            'openPeriodType' => 'OpenPeriod',
-                            'periods' => [
-                                [
-                                    'startTime' => '11:30',
-                                    'endTime' => '14:00'
-                                    ]
-                            ]
-                        ],
-                        'wed' => [
-                            'openPeriodType' => 'OpenPeriod',
-                            'periods' => [
-                                [
-                                    'startTime' => '11:30',
-                                    'endTime' => '14:00'
-                                    ]
-                            ]
-                        ],
-                        'thu' => [
-                            'openPeriodType' => 'OpenPeriod',
-                            'periods' => [
-                                [
-                                    'startTime' => '11:30',
-                                    'endTime' => '14:00'
-                                    ]
-                            ]
-                        ],
-                        'fri' => [
-                            'openPeriodType' => 'OpenPeriod',
-                            'periods' => [
-                                [
-                                    'startTime' => '11:30',
-                                    'endTime' => '14:00'
-                                    ]
-                            ]
-                        ],
-                        'sat' => [
-                            'openPeriodType' => 'OpenPeriod',
-                            'periods' => [
-                                [
-                                    'startTime' => '11:30',
-                                    'endTime' => '14:00'
-                                    ]
-                            ]
-                        ],
-                        'sun'=> [
-                            'openPeriodType' => 'OpenPeriod',
-                            'periods' => [
-                                [
-                                    'startTime' => '11:30',
-                                    'endTime' => '14:00'
-                                    ]
-                            ]
-                        ]
-                    ]
-                ]
-            ],
-            'categories' => [
-                [
-                    'id' => 'category_id',
-                    'name' => 'category_name',
-                    'availableStatus' => 'AVAILABLE',
-                    'sellingTimeID' => 'par',
-                    'subCategories' => [
-                        [
-                            'id' => 'subCategory_id',
-                            'name' => 'subCategory_name',
-                            'availableStatus' => 'AVAILABLE',
-                            'sellingTimeID' => 'partner-sellingTimeID-1',
-                            'items' => [
-                                [
-                                    'id' => 'item_id',
-                                    'name' => 'Fresh salmon',
-                                    'nameTranslation' => [],
-                                    'availableStatus' => 'AVAILABLE',
-                                    'description' => 'Fresh salmon imported from Japan.',
-                                    'descriptionTranslation' => [],
-                                    'price' => 2000,
-                                    'photos' => [],
-                                    'specialType' => null,
-                                    'taxable' => false,
-                                    'barcode' => 'GTIN',
-                                    'maxStock' => 15,
-                                    'maxCount' => 5,
-                                    'weight' => [],
-                                    'soldByWeight' => true,
-                                    'sellingUom' => [],
-                                    'sellingTimeID' => 'partner-sellingTimeID-1',
-                                    'advancedPricing' => [],
-                                    'purchasability' => [],
-                                    'modifierGroups' => []
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
-            ]                  
-        ];
-
-        return $response;
-    }
-
     public function updateMenuRecord(Request $request)
     {
         $token = $this->oAuth()['access_token'];
@@ -204,21 +75,7 @@ class GrabController extends Controller
                 'merchantID' => $merchantID,
                 'field' => 'ITEM',
                 'id' => 'ITEMID-1',
-                'price' => 12000,
-                'availableStatus' => 'AVAILABLE',
-                'maxStock' => 15,
-                'advancedPricings' => [
-                    [
-                        'key' => 'Delivery_OnDemand_GrabApp',
-                        'price' => 2000
-                    ]
-                ],
-                'purchasabilities' => [
-                    [
-                        'key' => 'Delivery_OnDemand_GrabApp',
-                        'purchasable' => true
-                    ]
-                ]
+                'price' => 12000
             ]);
 
             if(!$response->successful()) {
@@ -230,5 +87,125 @@ class GrabController extends Controller
             report($e);
             return false;
         }   
+    }
+
+    public function submitOrder(Request $request)
+    {
+        $token = $this->oAuth()['access_token'];
+        $merchantID = env('GRAB_MERCHANT_ID', '');
+
+        $response = [
+            'orderID' => '',
+            'shortOrderNumber' => 'ITEM',
+            'merchantID' => $merchantID,
+            'paymentType' => 'CASHLESS',
+            'orderTime' => '',
+            'submitTime' => '2019-05-24T05:16:00Z',
+            'completeTime' => '2019-05-24T05:26:00Z',
+            'scheduledTime' => '2019-05-24T08:26:00Z',
+            'orderState' => 'DELIVERED',
+            'currency' => [
+                'code' => 'IDR',
+                'symbol' => 'Rp',
+                'exponent' => 0
+            ],
+            'featureFlags' => [
+                'orderAcceptedType' => 'AUTO',
+                'orderType' => 'DeliveredByGrab',
+                'isMexEditOrder' => false
+            ],
+            'items' => [
+                'id' => 'item-1',
+                'grabItemID' => 'IDGFSTI000004qy1490868132306763533',
+                'quantity' => 1,
+                'price' => 2550,
+                'tax' => 144,
+                'specifications' => 'less sugar and chili',
+                'modifiers' => [],
+                'campaigns' => [],
+                'promos' => [],
+                'price' => [
+                    'subtotal' => 2550,
+                    'tax' => 117,
+                    'merchantChargeFee' => 0,
+                    'grabFundPromo' => 300,
+                    'merchantFundPromo' => 475,
+                    'basketPromo' => 775,
+                    'deliveryFee' => 400,
+                    'eaterPayment' => 2175
+                ],
+                'receiver' => [
+                    'name' => 'Prashanth',
+                    'phones' => 60122234704,
+                    'address' => [
+                        'unitNumber' => '3-45',
+                        'deliveryInstruction' => 'turn left in 2 floor.',
+                        'poiSource' => 'GRAB',
+                        'poiID' => 'string',
+                        'address' => '123, Jalan Eater street, Batu Caves, 12345, Selangor',
+                        'postcode' => 123456,
+                        'coordinates' => [
+                            'latitude' => 1.234567,
+                            'longitude' => 3.456789
+                        ]
+                    ]
+                ],
+                'orderReadyEstimation' => [
+                    'allowChange' => true,
+                    'estimatedOrderReadyTime' => '2019-05-24T05:16:00Z',
+                    'maxOrderReadyTime' => '2019-05-24T05:16:00Z',
+                    'newOrderReadyTime' => '2019-05-24T05:26:00Z'
+                ],
+                'membershipID' => ''
+            ]
+        ];
+
+        if (!$request->hasHeader('Authorization')) {
+            return $response->unauthorized();
+        }
+
+        return $response;
+    }
+
+    public function pushOrder(Request $request)
+    {
+        $merchantID = env('GRAB_MERCHANT_ID', '');
+
+        $response = [
+            'merchantID' => $merchantID,
+            'orderID' => '',
+            'state' => 'CANCELLED',
+            'driverETA' => null,
+            'code' => 'CANCELLED',
+            'message' => 'We are too busy right now.'
+        ];
+
+        if (!$request->hasHeader('Authorization')) {
+            return $response->unauthorized();
+        }
+
+        return $response;
+    }
+
+    public function menuSyncWebhook()
+    {
+        $merchantID = env('GRAB_MERCHANT_ID', '');
+        $partnerMerchantID = env('GRAB_PARTNER_ID', '');
+
+        $response = [
+            'requestID' => '',
+            'merchantID' => $merchantID,
+            'partnerMerchantID' => $partnerMerchantID,
+            'jobID' => '',
+            'updatedAt' => '',
+            'status' => null,
+            'errors' => [],
+        ];
+
+        if (!$request->hasHeader('Authorization')) {
+            return $response->unauthorized();
+        }
+
+        return $response;
     }
 }
