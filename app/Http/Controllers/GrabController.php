@@ -187,7 +187,7 @@ class GrabController extends Controller
         return $response;
     }
 
-    public function menuSyncWebhook()
+    public function menuSyncWebhook(Request $request)
     {
         $merchantID = env('GRAB_MERCHANT_ID', '');
         $partnerMerchantID = env('GRAB_PARTNER_ID', '');
@@ -201,10 +201,6 @@ class GrabController extends Controller
             'status' => null,
             'errors' => [],
         ];
-
-        if (!$request->hasHeader('Authorization')) {
-            return $response->unauthorized();
-        }
 
         return $response;
     }
