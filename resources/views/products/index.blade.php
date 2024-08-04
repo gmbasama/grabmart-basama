@@ -28,9 +28,14 @@
 
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
-                        <a href="{{ route('products.create') }}" class="btn btn-md btn-success mb-3 float-end">New
-                            Product</a>
-
+                        <div class="flex justify-between">
+                            <a href="{{ route('products.create') }}" class="btn btn-md btn-success mb-3 float-end">New
+                                Product</a>
+                                <form action="{{ route('products.search') }}" method="GET">
+                                    <input type="text" name="keyword" placeholder="Search Products">
+                                    <button type="submit">Search</button>
+                                </form>
+                        </div>
                         <table class="table table-bordered mt-1 text-center">
                             <thead>
                                 <tr>
@@ -63,7 +68,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td class="text-center text-mute" colspan="4">Data produk tidak tersedia</td>
+                                        <td class="text-center text-mute" colspan="6">Data produk tidak tersedia</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -79,7 +84,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-
 </body>
 
 </html>

@@ -13,7 +13,7 @@ class GrabController extends Controller
     {
         $clientID = env('GRAB_CLIENT_ID', '');
         $clientSecret = env('GRAB_CLIENT_SECRET', '');
-        
+
         try {
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json'
@@ -74,8 +74,8 @@ class GrabController extends Controller
             ->put('https://partner-api.products.com/grabmart-sandbox/partner/v1/menu', [
                 'merchantID' => $merchantID,
                 'field' => 'ITEM',
-                'id' => '010110210367',
-                'price' => 164700
+                'id' => $request->id,
+                'price' => $request->price
             ]);
 
             if(!$response->successful()) {
@@ -86,7 +86,7 @@ class GrabController extends Controller
         } catch (Throwable $e) {
             report($e);
             return false;
-        }   
+        }
     }
 
     public function submitOrder(Request $request)
