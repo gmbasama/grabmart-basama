@@ -10,7 +10,7 @@ class Grab extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = 'items';
+    protected $table = 'dbo.items';
 
     protected $fillable = [
         'id',

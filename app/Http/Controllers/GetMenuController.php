@@ -14,9 +14,9 @@ class GetMenuController extends Controller
 {
     public function index()
     {
-        $data = Grab::select('items.*', 'sub_categories.name as division_name')
-        ->leftJoin('sub_categories', 'items.subcategory_id', '=', 'sub_categories.id')
-        ->orderBy('items.subcategory_id', 'asc')->paginate(15);
+        $data = Grab::select('dbo.items.*', 'dbo.sub_categories.name as division_name')
+        ->leftJoin('dbo.sub_categories', 'dbo.items.subcategory_id', '=', 'dbo.sub_categories.id')
+        ->orderBy('dbo.items.subcategory_id', 'asc')->paginate(15);
 
         if (!$data) {
             return false;
@@ -26,9 +26,9 @@ class GetMenuController extends Controller
 
     public function create()
     {
-        $category = Grab::select('items.subcategory_id as division_id', 'sub_categories.name as division_name')
-        ->leftJoin('sub_categories', 'items.subcategory_id', '=', 'sub_categories.id')
-        ->orderBy('items.subcategory_id', 'asc')->distinct()->get();
+        $category = Grab::select('dbo.items.subcategory_id as division_id', 'dbo.sub_categories.name as division_name')
+        ->leftJoin('dbo.sub_categories', 'dbo.items.subcategory_id', '=', 'dbo.sub_categories.id')
+        ->orderBy('dbo.items.subcategory_id', 'asc')->distinct()->get();
 
         return view('products.create', compact('category'));
     }
@@ -152,17 +152,17 @@ class GetMenuController extends Controller
         }
 
         $frozen = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
         ->where('subcategory_id', 'IDITEDP20220701091225011414')->orderBy('subcategory_id', 'asc')->get();
 
@@ -171,17 +171,17 @@ class GetMenuController extends Controller
         }
 
         $health = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
         ->where('subcategory_id', 'IDITEDP20220701092521017633')->orderBy('subcategory_id', 'asc')->get();
 
@@ -190,17 +190,17 @@ class GetMenuController extends Controller
         }
 
         $chips = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085346014231')->orderBy('subcategory_id', 'asc')->get();
@@ -210,17 +210,17 @@ class GetMenuController extends Controller
         }
 
         $candy = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085648019022')->orderBy('subcategory_id', 'asc')->get();
@@ -230,17 +230,17 @@ class GetMenuController extends Controller
         }
 
         $ice = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085757015076')->orderBy('subcategory_id', 'asc')->get();
@@ -250,17 +250,17 @@ class GetMenuController extends Controller
         }
 
         $peanuts = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085852012532')->orderBy('subcategory_id', 'asc')->get();
@@ -270,17 +270,17 @@ class GetMenuController extends Controller
         }
 
         $traditional = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085959013246')->orderBy('subcategory_id', 'asc')->get();
@@ -290,17 +290,17 @@ class GetMenuController extends Controller
         }
 
         $dried = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701090459016004')->orderBy('subcategory_id', 'asc')->get();
@@ -310,17 +310,17 @@ class GetMenuController extends Controller
         }
 
         $noodle = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701090649012562')->orderBy('subcategory_id', 'asc')->get();
@@ -330,17 +330,17 @@ class GetMenuController extends Controller
         }
 
         $oils = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701091011014270')->orderBy('subcategory_id', 'asc')->get();
@@ -350,17 +350,17 @@ class GetMenuController extends Controller
         }
 
         $rice = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701091254019744')->orderBy('subcategory_id', 'asc')->get();
@@ -370,17 +370,17 @@ class GetMenuController extends Controller
         }
 
         $sauces = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701091351019779')->orderBy('subcategory_id', 'asc')->get();
@@ -390,17 +390,17 @@ class GetMenuController extends Controller
         }
 
         $spices = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701091508010209')->orderBy('subcategory_id', 'asc')->get();
@@ -410,17 +410,17 @@ class GetMenuController extends Controller
         }
 
         $sugar = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701091611019834')->orderBy('subcategory_id', 'asc')->get();
@@ -430,17 +430,17 @@ class GetMenuController extends Controller
         }
 
         $seeds = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20230516111303013926')->orderBy('subcategory_id', 'asc')->get();
@@ -450,17 +450,17 @@ class GetMenuController extends Controller
         }
 
         $others = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20221116101254014717')->orderBy('subcategory_id', 'asc')->get();
@@ -470,17 +470,17 @@ class GetMenuController extends Controller
         }
 
         $others2 = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20221116101332019648')->orderBy('subcategory_id', 'asc')->get();
@@ -490,17 +490,17 @@ class GetMenuController extends Controller
         }
 
         $mom = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701084139010514')->orderBy('subcategory_id', 'asc')->get();
@@ -510,17 +510,17 @@ class GetMenuController extends Controller
         }
 
         $beverages = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220718100055018223')->orderBy('subcategory_id', 'asc')->get();
@@ -530,17 +530,17 @@ class GetMenuController extends Controller
         }
 
         $beverages2 = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20230213070339012880')->orderBy('subcategory_id', 'asc')->get();
@@ -550,17 +550,17 @@ class GetMenuController extends Controller
         }
 
         $bakery = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085513018279')->orderBy('subcategory_id', 'asc')->get();
@@ -570,17 +570,17 @@ class GetMenuController extends Controller
         }
 
         $bakery2 = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085628017532')->orderBy('subcategory_id', 'asc')->get();
@@ -590,17 +590,17 @@ class GetMenuController extends Controller
         }
 
         $dairy = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701090049019477')->orderBy('subcategory_id', 'asc')->get();
@@ -610,17 +610,17 @@ class GetMenuController extends Controller
         }
 
         $dairy2 = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701090257019878')->orderBy('subcategory_id', 'asc')->get();
@@ -630,17 +630,17 @@ class GetMenuController extends Controller
         }
 
         $eggs = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701085930014940')->orderBy('subcategory_id', 'asc')->get();
@@ -650,17 +650,17 @@ class GetMenuController extends Controller
         }
 
         $fruit = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701091747019463')->orderBy('subcategory_id', 'asc')->get();
@@ -670,17 +670,17 @@ class GetMenuController extends Controller
         }
 
         $tofu = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701092018013176')->orderBy('subcategory_id', 'asc')->get();
@@ -690,17 +690,17 @@ class GetMenuController extends Controller
         }
 
         $vegetable = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20220701092135010576')->orderBy('subcategory_id', 'asc')->get();
@@ -710,17 +710,17 @@ class GetMenuController extends Controller
         }
 
         $instant = Grab::select(
-            DB::raw('items.id AS ID'),
-            'items.name',
-            'items.availableStatus',
-            'items.description',
-            'items.price',
-            'items.photos',
-            'items.specialType',
-            'items.barcode',
-            'items.maxStock',
-            'items.maxCount',
-            'items.sellingTimeID'
+            DB::raw('dbo.items.id AS ID'),
+            'dbo.items.name',
+            'dbo.items.availableStatus',
+            'dbo.items.description',
+            'dbo.items.price',
+            'dbo.items.photos',
+            'dbo.items.specialType',
+            'dbo.items.barcode',
+            'dbo.items.maxStock',
+            'dbo.items.maxCount',
+            'dbo.items.sellingTimeID'
         )
             
             ->where('subcategory_id', 'IDITEDP20221116101053019742')->orderBy('subcategory_id', 'asc')->get();
@@ -823,7 +823,7 @@ class GetMenuController extends Controller
                             'name' => 'Alcohol (21+)',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $alcohol
+                            'dbo.items' => $alcohol
                         ]
                     ]
                 ],
@@ -839,7 +839,7 @@ class GetMenuController extends Controller
                             'name' => 'Ready to Cook & Eat',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $frozen
+                            'dbo.items' => $frozen
                         ]
                     ]
                 ],
@@ -855,7 +855,7 @@ class GetMenuController extends Controller
                             'name' => 'Medicine',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $health
+                            'dbo.items' => $health
                         ]
                     ]
                 ],
@@ -871,35 +871,35 @@ class GetMenuController extends Controller
                             'name' => 'Chips & Crackers',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $chips
+                            'dbo.items' => $chips
                         ],
                         [
                             'id' => 'IDITEDP20220701085648019022',
                             'name' => 'Chocolates & Candies',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $candy
+                            'dbo.items' => $candy
                         ],
                         [
                             'id' => 'IDITEDP20220701085757015076',
                             'name' => 'Ice Cream & Dessert',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $ice
+                            'dbo.items' => $ice
                         ],
                         [
                             'id' => 'IDITEDP20220701085852012532',
                             'name' => 'Peanuts & Dry Snacks',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $peanuts
+                            'dbo.items' => $peanuts
                         ],
                         [
                             'id' => 'IDITEDP20220701085959013246',
                             'name' => 'Traditional Snacks',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $traditional
+                            'dbo.items' => $traditional
                         ]
                     ]
                 ],
@@ -915,56 +915,56 @@ class GetMenuController extends Controller
                             'name' => 'Dried Food',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $dried
+                            'dbo.items' => $dried
                         ],
                         [
                             'id' => 'IDITEDP20220701090649012562',
                             'name' => 'Noodle & Pasta',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $noodle
+                            'dbo.items' => $noodle
                         ],
                         [
                             'id' => 'IDITEDP20220701091011014270',
                             'name' => 'Oils & Vinegars',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $oils
+                            'dbo.items' => $oils
                         ],
                         [
                             'id' => 'IDITEDP20220701091254019744',
                             'name' => 'Rice',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $rice
+                            'dbo.items' => $rice
                         ],
                         [
                             'id' => 'IDITEDP20220701091351019779',
                             'name' => 'Sauces & Ketchups',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $sauces
+                            'dbo.items' => $sauces
                         ],
                         [
                             'id' => 'IDITEDP20220701091508010209',
                             'name' => 'Spices & Seasonings',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $spices
+                            'dbo.items' => $spices
                         ],
                         [
                             'id' => 'IDITEDP20220701091611019834',
                             'name' => 'Sugar & Salt',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $sugar
+                            'dbo.items' => $sugar
                         ],
                         [
                             'id' => 'IDITEDP20230516111303013926',
                             'name' => 'Grains & Seeds',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $seeds
+                            'dbo.items' => $seeds
                         ]
                     ]
                 ],
@@ -980,14 +980,14 @@ class GetMenuController extends Controller
                             'name' => 'Other Needs',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $others
+                            'dbo.items' => $others
                         ],
                         [
                             'id' => 'IDITEDP20221116101332019648',
                             'name' => 'Shopping Bags & Packaging',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $others2
+                            'dbo.items' => $others2
                         ]
                     ]
                 ],
@@ -1003,7 +1003,7 @@ class GetMenuController extends Controller
                             'name' => 'Baby Food & Milk',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $mom
+                            'dbo.items' => $mom
                         ]
                     ]
                 ],
@@ -1019,14 +1019,14 @@ class GetMenuController extends Controller
                             'name' => 'Tea Bag/Powder',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $beverages
+                            'dbo.items' => $beverages
                         ],
                         [
                             'id' => 'IDITEDP20230213070339012880',
                             'name' => 'Ready to Drinks',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $beverages2
+                            'dbo.items' => $beverages2
                         ]
                     ]
                 ],
@@ -1042,14 +1042,14 @@ class GetMenuController extends Controller
                             'name' => 'Cereal & Granola',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $bakery
+                            'dbo.items' => $bakery
                         ],
                         [
                             'id' => 'IDITEDP20220701085628017532',
                             'name' => 'Spreads',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $bakery2
+                            'dbo.items' => $bakery2
                         ]
                     ]
                 ],
@@ -1065,21 +1065,21 @@ class GetMenuController extends Controller
                             'name' => 'Eggs',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $eggs
+                            'dbo.items' => $eggs
                         ],
                         [
                             'id' => 'IDITEDP20220701090049019477',
                             'name' => 'Fresh Milk',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $dairy
+                            'dbo.items' => $dairy
                         ],
                         [
                             'id' => 'IDITEDP20220701090257019878',
                             'name' => 'Powdered Milk',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $dairy2
+                            'dbo.items' => $dairy2
                         ]
                     ]
                 ],
@@ -1095,21 +1095,21 @@ class GetMenuController extends Controller
                             'name' => 'Fruits',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $fruit
+                            'dbo.items' => $fruit
                         ],
                         [
                             'id' => 'IDITEDP20220701092018013176',
                             'name' => 'Tofu & Tempe',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $tofu
+                            'dbo.items' => $tofu
                         ],
                         [
                             'id' => 'IDITEDP20220701092135010576',
                             'name' => 'Vegetables',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $vegetable
+                            'dbo.items' => $vegetable
                         ]
                     ]
                 ],
@@ -1125,7 +1125,7 @@ class GetMenuController extends Controller
                             'name' => 'Canned Food',
                             'availableStatus' => 'AVAILABLE',
                             'sellingTimeID' => 'SELL01',
-                            'items' => $instant
+                            'dbo.items' => $instant
                         ]
                     ]
                 ],
