@@ -8,6 +8,7 @@ use DB;
 use Illuminate\Support\Facades\Validator;
 
 use App\Models\Grab;
+use App\Models\Menu;
 
 class GetMenuController extends Controller
 {
@@ -56,6 +57,18 @@ class GetMenuController extends Controller
             ->with('message', 'New product created successfully');
     }
 
+    public function show(Request $request)
+	{
+		$keyword = $request->keyword;
+
+		$data = Grab::select('items.*', 'sub_categories.name as division_name')
+        ->leftJoin('sub_categories', 'items.subcategory_id', '=', 'sub_categories.id')
+        ->where('items.name','like','%'.$keyword.'%')
+		->paginate(15);
+
+		return view('products.index', compact('data'));
+	}
+
     public function edit($id)
     {
         $item = Grab::find($id);
@@ -92,6 +105,26 @@ class GetMenuController extends Controller
         return redirect()
             ->route('products.index')
             ->with('message', 'Product deleted successfully');
+    }
+
+    public function upload(Request $request)
+    {
+        $path = $request->file('photos')->store('public');
+
+        $result = Menu::create([
+            'name'   => $request->name,
+            'photos' => stripslashes($path),
+        ]);
+
+        return response()->json($result);
+    }
+
+    public function getCategoryName(Request $request)
+    {
+        $category = Grab::select('name', 'subcategory_id')
+        ->orderBy('subcategory_id', 'asc')->get();
+
+        return response()->json($category);
     }
 
     public function getMenu(Request $request)

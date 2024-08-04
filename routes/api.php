@@ -22,3 +22,5 @@ Route::put('/orders/grabID/order/state', [GrabController::class, 'pushOrder']);
 Route::post('menus/sync-webhook', [GrabController::class, 'menuSyncWebhook']);
 
 Route::get('/menus/grabID/merchant/menu', [GetMenuController::class, 'getMenu']);
+Route::post('/products/upload', [GetMenuController::class, 'upload']);
+Route::get('/products', [GetMenuController::class, 'getCategoryName']);
