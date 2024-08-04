@@ -114,7 +114,7 @@ class GrabController extends Controller
                 'orderType' => 'DeliveredByGrab',
                 'isMexEditOrder' => false
             ],
-            'items' => [
+            'dbo.items' => [
                 'id' => 'item-1',
                 'grabItemID' => 'IDGFSTI000004qy1490868132306763533',
                 'quantity' => 1,
