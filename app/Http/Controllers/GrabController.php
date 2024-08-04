@@ -18,7 +18,7 @@ class GrabController extends Controller
             $response = Http::withHeaders([
                 'Content-Type' => 'application/json'
             ])
-            ->post('https://api.products.com/grabid/v1/oauth2/token', [
+            ->post('https://api.grab.com/grabid/v1/oauth2/token', [
                 'client_id' => $clientID,
                 'client_secret' => $clientSecret,
                 'grant_type' => 'client_credentials',
@@ -46,7 +46,7 @@ class GrabController extends Controller
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . $token
             ])
-            ->post('https://partner-api.products.com/grabmart-sandbox/partner/v1/merchant/menu/notification', [
+            ->post('https://partner-api.grab.com/grabmart-sandbox/partner/v1/merchant/menu/notification', [
                 'merchantID' => $merchantID
             ]);
 
@@ -71,7 +71,7 @@ class GrabController extends Controller
                 'Content-Type' => 'application/json',
                 'Authorization' => 'Bearer ' . $token
             ])
-            ->put('https://partner-api.products.com/grabmart-sandbox/partner/v1/menu', [
+            ->put('https://partner-api.grab.com/grabmart-sandbox/partner/v1/menu', [
                 'merchantID' => $merchantID,
                 'field' => 'ITEM',
                 'id' => $request->id,
