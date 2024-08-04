@@ -133,7 +133,7 @@ class GetMenuController extends Controller
         $partnerMerchantID = env('GRAB_PARTNER_ID', '');
 
         $alcohol = Grab::select(
-            DB::raw('items.id AS ID'),
+            'items.id',
             'items.name',
             'items.availableStatus',
             'items.description',
@@ -145,7 +145,7 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20200610034750011166')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+        ->where('subcategory_id', 'IDITEDP20220310094423015254')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($alcohol as $photos1) {
             $photos1['photos'] = explode(" ", $photos1['photos']);
@@ -164,7 +164,7 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629082832016723')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+        ->where('subcategory_id', 'IDITEDP20220701091225011414')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($frozen as $photos2) {
             $photos2['photos'] = explode(" ", $photos2['photos']);
@@ -183,7 +183,7 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083236010281')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+        ->where('subcategory_id', 'IDITEDP20220701092521017633')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($health as $photos3) {
             $photos3['photos'] = explode(" ", $photos3['photos']);
@@ -202,8 +202,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083554015180')
-            ->where('subcategories_id', 'IDITEDP20220701085346014231')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085346014231')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($chips as $photos4) {
             $photos4['photos'] = explode(" ", $photos4['photos']);
@@ -222,8 +222,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083554015180')
-            ->where('subcategories_id', 'IDITEDP20220701085648019022')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085648019022')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($candy as $photos5) {
             $photos5['photos'] = explode(" ", $photos5['photos']);
@@ -242,8 +242,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083554015180')
-            ->where('subcategories_id', 'IDITEDP20220701085757015076')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085757015076')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($ice as $photos6) {
             $photos6['photos'] = explode(" ", $photos6['photos']);
@@ -262,8 +262,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083554015180')
-            ->where('subcategories_id', 'IDITEDP20220701085852012532')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085852012532')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($peanuts as $photos7) {
             $photos7['photos'] = explode(" ", $photos7['photos']);
@@ -282,8 +282,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083554015180')
-            ->where('subcategories_id', 'IDITEDP20220701085959013246')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085959013246')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($traditional as $photos8) {
             $photos8['photos'] = explode(" ", $photos8['photos']);
@@ -302,8 +302,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20220701090459016004')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701090459016004')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($dried as $photos9) {
             $photos9['photos'] = explode(" ", $photos9['photos']);
@@ -322,8 +322,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20220701090649012562')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701090649012562')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($noodle as $photos10) {
             $photos10['photos'] = explode(" ", $photos10['photos']);
@@ -342,8 +342,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20220701091011014270')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701091011014270')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($oils as $photos11) {
             $photos11['photos'] = explode(" ", $photos11['photos']);
@@ -362,8 +362,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20220701091254019744')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701091254019744')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($rice as $photos12) {
             $photos12['photos'] = explode(" ", $photos12['photos']);
@@ -382,8 +382,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20220701091351019779')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701091351019779')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($sauces as $photos13) {
             $photos13['photos'] = explode(" ", $photos13['photos']);
@@ -402,8 +402,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20220701091508010209')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701091508010209')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($spices as $photos14) {
             $photos14['photos'] = explode(" ", $photos14['photos']);
@@ -422,8 +422,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20220701091611019834')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701091611019834')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($sugar as $photos15) {
             $photos15['photos'] = explode(" ", $photos15['photos']);
@@ -442,8 +442,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083635011784')
-            ->where('subcategories_id', 'IDITEDP20230516111303013926')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20230516111303013926')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($seeds as $photos14) {
             $photos14['photos'] = explode(" ", $photos14['photos']);
@@ -462,8 +462,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083803015272')
-            ->where('subcategories_id', 'IDITEDP20221116101254014717')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20221116101254014717')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($others as $photos15) {
             $photos15['photos'] = explode(" ", $photos15['photos']);
@@ -482,8 +482,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629083803015272')
-            ->where('subcategories_id', 'IDITEDP20221116101332019648')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20221116101332019648')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($others2 as $photos16) {
             $photos16['photos'] = explode(" ", $photos16['photos']);
@@ -502,8 +502,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084125010672')
-            ->where('subcategories_id', 'IDITEDP20220701084139010514')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701084139010514')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($mom as $photos17) {
             $photos17['photos'] = explode(" ", $photos17['photos']);
@@ -522,8 +522,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084347011754')
-            ->where('subcategories_id', 'IDITEDP20220718100055018223')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220718100055018223')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($beverages as $photos18) {
             $photos18['photos'] = explode(" ", $photos18['photos']);
@@ -542,8 +542,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084347011754')
-            ->where('subcategories_id', 'IDITEDP20230213070339012880')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20230213070339012880')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($beverages2 as $photos19) {
             $photos19['photos'] = explode(" ", $photos19['photos']);
@@ -562,8 +562,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084424012073')
-            ->where('subcategories_id', 'IDITEDP20220701085513018279')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085513018279')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($bakery as $photos20) {
             $photos20['photos'] = explode(" ", $photos20['photos']);
@@ -582,8 +582,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084424012073')
-            ->where('subcategories_id', 'IDITEDP20220701085628017532')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085628017532')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($bakery2 as $photos21) {
             $photos21['photos'] = explode(" ", $photos21['photos']);
@@ -602,8 +602,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084534013268')
-            ->where('subcategories_id', 'IDITEDP20220701090049019477')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701090049019477')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($dairy as $photos22) {
             $photos22['photos'] = explode(" ", $photos22['photos']);
@@ -622,8 +622,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084534013268')
-            ->where('subcategories_id', 'IDITEDP20220701090257019878')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701090257019878')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($dairy2 as $photos23) {
             $photos23['photos'] = explode(" ", $photos23['photos']);
@@ -642,8 +642,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084534013268')
-            ->where('subcategories_id', 'IDITEDP20220701085930014940')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701085930014940')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($eggs as $photos24) {
             $photos24['photos'] = explode(" ", $photos24['photos']);
@@ -662,8 +662,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084603017236')
-            ->where('subcategories_id', 'IDITEDP20220701091747019463')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701091747019463')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($fruit as $photos25) {
             $photos25['photos'] = explode(" ", $photos25['photos']);
@@ -682,8 +682,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084603017236')
-            ->where('subcategories_id', 'IDITEDP20220701092018013176')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701092018013176')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($tofu as $photos26) {
             $photos26['photos'] = explode(" ", $photos26['photos']);
@@ -702,8 +702,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629084603017236')
-            ->where('subcategories_id', 'IDITEDP20220701092135010576')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20220701092135010576')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($vegetable as $photos27) {
             $photos27['photos'] = explode(" ", $photos27['photos']);
@@ -722,8 +722,8 @@ class GetMenuController extends Controller
             'items.maxCount',
             'items.sellingTimeID'
         )
-            ->where('categories_id', 'IDITEDP20220629090006013664')
-            ->where('subcategories_id', 'IDITEDP20221116101053019742')->orderBy('categories_id', 'asc')->orderBy('subcategories_id', 'asc')->get();
+            
+            ->where('subcategory_id', 'IDITEDP20221116101053019742')->orderBy('subcategory_id', 'asc')->get();
 
         foreach ($instant as $photos28) {
             $photos28['photos'] = explode(" ", $photos28['photos']);

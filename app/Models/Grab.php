@@ -33,6 +33,9 @@ class Grab extends Model
     {
         return [
             'id' => 'string',
+            'price' => 'integer',
+            'maxStock' => 'integer',
+            'maxCount' => 'integer'
         ];
     }
 }
