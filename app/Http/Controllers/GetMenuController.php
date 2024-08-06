@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 use App\Models\Grab;
 use App\Models\Menu;
+use App\Http\Controllers\GrabController;
 
 class GetMenuController extends Controller
 {
@@ -77,19 +78,23 @@ class GetMenuController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request);
         $item = Grab::find($id);
 
         $item->id = $request->id;
         $item->name = $request->name;
-        $item->available_status = $request->available_status;
+        $item->availableStatus = $request->available_status;
         $item->description = $request->description;
         $item->price = $request->price;
         $item->photos = $request->photos;
         $item->barcode = $request->barcode;
-        $item->max_stock = $request->max_stock;
-        $item->max_count = $request->max_count;
+        $item->maxStock = $request->max_stock;
+        $item->maxCount = $request->max_count;
 
         $item->save();
+
+        $update = new GrabController();
+        $update->updateMenuRecord($request);
 
         return redirect()
             ->route('products.index')
@@ -111,20 +116,31 @@ class GetMenuController extends Controller
     {
         $path = $request->file('photos')->store('public');
 
-        $result = Menu::create([
-            'name'   => $request->name,
-            'photos' => stripslashes($path),
-        ]);
+        try {
+            $result = Menu::create([
+                'name'   => $request->name,
+                'photos' => stripslashes($path),
+            ]);
+        } catch (Exception $e) {
+            Log::debug($e->getMessage());
+        }
 
         return response()->json($result);
     }
 
     public function getCategoryName(Request $request)
     {
+        $query = '';
+        if ($request->has('query')) {
+            $query = $request->get('query');
+        }
+
         $category = Grab::select('name', 'subcategory_id')
+        ->where('is_uploaded', false)
+        ->where('name', 'like', '%'.$query.'%')
         ->orderBy('subcategory_id', 'asc')->get();
 
-        return response()->json($category);
+        return response()->json(['data' => $category]);
     }
 
     public function getMenu(Request $request)

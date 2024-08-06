@@ -76,7 +76,7 @@
                                     <div class="column mb-3">
                                         <label id="available_status">Status</label>
                                         <select class="form-control @error('available_status') is-invalid @enderror"
-                                            name="available_status" value="{{ old('available_status', $item->available_status) }}" required>
+                                            name="available_status" value="{{ old('available_status', $item->availableStatus) }}" required>
                                             <option value="AVAILABLE">Available</option>
                                             <option value="UNAVAILABLE">Unavailable</option>
                                         </select>
@@ -147,7 +147,7 @@
                                         <label id="max_stock">Max Stock</label>
                                         <input type="number"
                                             class="form-control @error('max_stock') is-invalid @enderror"
-                                            name="max_stock" value="{{ old('max_stock', $item->max_stock) }}" required>
+                                            name="max_stock" value="{{ old('max_stock', $item->maxStock) }}" required>
 
                                         <!-- error message untuk name -->
                                         @error('max_stock')
@@ -161,7 +161,7 @@
                                         <label id="max_count">Max Count</label>
                                         <input type="number"
                                             class="form-control @error('max_count') is-invalid @enderror"
-                                            name="max_count" value="{{ old('max_count', $item->max_count) }}" required>
+                                            name="max_count" value="{{ old('max_count', $item->maxCount) }}" required>
 
                                         <!-- error message untuk name -->
                                         @error('max_count')

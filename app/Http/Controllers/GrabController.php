@@ -74,13 +74,15 @@ class GrabController extends Controller
             ->put('https://partner-api.grab.com/grabmart-sandbox/partner/v1/menu', [
                 'merchantID' => $merchantID,
                 'field' => 'ITEM',
+                // 'id' => '0000054',
+                // 'price' => 21500
                 'id' => $request->id,
                 'price' => $request->price
             ]);
 
-            if(!$response->successful()) {
-                return $response->throw();
-            }
+            // if(!$response->successful()) {
+            //     return $response->throw();
+            // }
             return $response->json();
 
         } catch (Throwable $e) {
