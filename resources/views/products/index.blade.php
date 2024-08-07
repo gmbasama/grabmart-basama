@@ -50,11 +50,11 @@
                             <tbody>
                                 @forelse ($data as $item)
                                     <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->price }}</td>
+                                        <td>{{ $item->product_code }}</td>
+                                        <td>{{ $item->product_name }}</td>
+                                        <td>{{ $item->product_price }}</td>
                                         <td>{{ $item->available_status }}</td>
-                                        <td>{{ $item->division_name }}</td>
+                                        <td>{{ $item->subcategory_name }}</td>
                                         <td>
                                             <form onsubmit="return confirm('Apakah Anda Yakin ?');"
                                                 action="{{ route('products.destroy', $item->id) }}" method="POST">

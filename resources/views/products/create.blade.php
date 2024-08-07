@@ -47,12 +47,12 @@
                             <div class="form-group">
                                 <div class="row">
                                     <div class="column mb-3">
-                                        <label id="id">ID</label>
-                                        <input type="text" class="form-control @error('id') is-invalid @enderror"
-                                            name="id" value="{{ old('id') }}" required>
+                                        <label id="product_code">Product Code</label>
+                                        <input type="text" class="form-control @error('product_code') is-invalid @enderror"
+                                            name="product_code" value="{{ old('product_code') }}" required>
 
                                         <!-- error message untuk id -->
-                                        @error('id')
+                                        @error('product_code')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -60,12 +60,12 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="name">Name</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value="{{ old('name') }}" required>
+                                        <label id="product_name">Product Name</label>
+                                        <input type="text" class="form-control @error('product_name') is-invalid @enderror"
+                                            name="product_name" value="{{ old('product_name') }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('name')
+                                        @error('product_name')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -89,13 +89,13 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="description">Description</label>
+                                        <label id="product_description">Description</label>
                                         <input type="text"
-                                            class="form-control @error('description') is-invalid @enderror"
-                                            name="description" value="{{ old('description') }}" required>
+                                            class="form-control @error('product_description') is-invalid @enderror"
+                                            name="product_description" value="{{ old('product_description') }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('description')
+                                        @error('product_description')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -103,12 +103,12 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="price">Price</label>
-                                        <input type="number" class="form-control @error('price') is-invalid @enderror"
-                                            name="price" value="{{ old('price') }}" required>
+                                        <label id="product_price">Price</label>
+                                        <input type="number" class="form-control @error('product_price') is-invalid @enderror"
+                                            name="product_price" value="{{ old('product_price') }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('price')
+                                        @error('product_price')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -116,12 +116,12 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="photos">Photos</label>
-                                        <input type="text" class="form-control @error('photos') is-invalid @enderror"
-                                            name="photos" value="{{ old('photos') }}" required>
+                                        <label id="product_photos">Photos</label>
+                                        <input type="text" class="form-control @error('product_photos') is-invalid @enderror"
+                                            name="product_photos" value="{{ old('product_photos') }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('photos')
+                                        @error('product_photos')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -176,8 +176,8 @@
                                             name="subcategory_id" value="{{ old('subcategory_id') }}" required>
                                             {{-- <option value=""> -- Select One --</option> --}}
                                             @foreach ($category as $value)
-                                                <option value="{{ $value->division_id }}">
-                                                    {{ $value->division_name }}
+                                                <option value="{{ $value->subcategory_code }}">
+                                                    {{ $value->subcategory_name }}
                                                 </option>
                                             @endforeach
                                         </select>

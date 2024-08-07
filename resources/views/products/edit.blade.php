@@ -42,18 +42,18 @@
                 <div class="card border-0 shadow rounded">
                     <div class="card-body">
 
-                        <form action="{{ route('products.update', $item->id) }}" method="POST">
+                        <form action="{{ route('products.update', $item->product_code) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <div class="form-group">
                                 <div class="row">
                                     <div class="column mb-3">
-                                        <label id="id">ID</label>
-                                        <input type="text" class="form-control @error('id') is-invalid @enderror"
-                                            name="id" value="{{ old('id', $item->id) }}" required>
+                                        <label id="product_code">ID</label>
+                                        <input type="text" class="form-control @error('product_code') is-invalid @enderror"
+                                            name="product_code" value="{{ old('product_code', $item->product_code) }}" required>
 
                                         <!-- error message untuk id -->
-                                        @error('id')
+                                        @error('product_code')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -61,12 +61,12 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="name">Name</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value="{{ old('name', $item->name) }}" required>
+                                        <label id="product_name">Name</label>
+                                        <input type="text" class="form-control @error('product_name') is-invalid @enderror"
+                                            name="product_name" value="{{ old('product_name', $item->product_name) }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('name')
+                                        @error('product_name')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -76,7 +76,7 @@
                                     <div class="column mb-3">
                                         <label id="available_status">Status</label>
                                         <select class="form-control @error('available_status') is-invalid @enderror"
-                                            name="available_status" value="{{ old('available_status', $item->availableStatus) }}" required>
+                                            name="available_status" value="{{ old('available_status', $item->available_status) }}" required>
                                             <option value="AVAILABLE">Available</option>
                                             <option value="UNAVAILABLE">Unavailable</option>
                                         </select>
@@ -90,13 +90,13 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="description">Description</label>
+                                        <label id="product_description">Description</label>
                                         <input type="text"
-                                            class="form-control @error('description') is-invalid @enderror"
-                                            name="description" value="{{ old('description', $item->description) }}" required>
+                                            class="form-control @error('product_description') is-invalid @enderror"
+                                            name="product_description" value="{{ old('product_description', $item->product_description) }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('description')
+                                        @error('product_description')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -104,12 +104,12 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="price">Price</label>
-                                        <input type="number" class="form-control @error('price') is-invalid @enderror"
-                                            name="price" value="{{ old('price', $item->price) }}" required>
+                                        <label id="product_price">Price</label>
+                                        <input type="number" class="form-control @error('product_price') is-invalid @enderror"
+                                            name="product_price" value="{{ old('product_price', $item->product_price) }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('price')
+                                        @error('product_price')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -117,12 +117,12 @@
                                     </div>
 
                                     <div class="column mb-3">
-                                        <label id="photos">Photos</label>
-                                        <input type="text" class="form-control @error('photos') is-invalid @enderror"
-                                            name="photos" value="{{ old('photos', $item->photos) }}" required>
+                                        <label id="product_photos">Photos</label>
+                                        <input type="text" class="form-control @error('product_photos') is-invalid @enderror"
+                                            name="product_photos" value="{{ old('product_photos', $item->product_photos) }}" required>
 
                                         <!-- error message untuk name -->
-                                        @error('photos')
+                                        @error('product_photos')
                                             <div class="invalid-feedback" role="alert">
                                                 {{ $message }}
                                             </div>
@@ -147,7 +147,7 @@
                                         <label id="max_stock">Max Stock</label>
                                         <input type="number"
                                             class="form-control @error('max_stock') is-invalid @enderror"
-                                            name="max_stock" value="{{ old('max_stock', $item->maxStock) }}" required>
+                                            name="max_stock" value="{{ old('max_stock', $item->max_stock) }}" required>
 
                                         <!-- error message untuk name -->
                                         @error('max_stock')
@@ -161,7 +161,7 @@
                                         <label id="max_count">Max Count</label>
                                         <input type="number"
                                             class="form-control @error('max_count') is-invalid @enderror"
-                                            name="max_count" value="{{ old('max_count', $item->maxCount) }}" required>
+                                            name="max_count" value="{{ old('max_count', $item->max_count) }}" required>
 
                                         <!-- error message untuk name -->
                                         @error('max_count')
@@ -170,26 +170,6 @@
                                             </div>
                                         @enderror
                                     </div>
-
-                                    {{-- <div class="column mb-3">
-                                        <label id="subcategory_id">Division</label>
-                                        <select class="form-control @error('subcategory_id') is-invalid @enderror"
-                                            name="subcategory_id" value="{{ old('subcategory_id', $item->subcategory_id) }}" required>
-                                            <option value=""> -- Select One --</option>
-                                            @foreach ($item as $value)
-                                                <option value="{{ $value->subcategory_id }}">
-                                                    {{ $value->subcategory_id }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-
-                                        <!-- error message untuk name -->
-                                        @error('subcategory_id')
-                                            <div class="invalid-feedback" role="alert">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div> --}}
                                 </div>
                             </div>
 
